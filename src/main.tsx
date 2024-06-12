@@ -12,7 +12,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <div>Hello world!</div>,
   },
+  {
+    path: "/test",
+    element: <div>Hello Test world!</div>,
+  }
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
