@@ -1,7 +1,6 @@
-import { Form } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
 
 interface Props {
-  id?:any;
   first?: string;
   last?: string;
   avatar?: string;
@@ -10,7 +9,6 @@ interface Props {
   favorite?: Boolean;
 }
 export const Contact = ({
-    id,
     first = "Your",
     last = "Name",
     avatar = "https://robohash.org/you.png?size=200x200",
@@ -18,15 +16,16 @@ export const Contact = ({
     notes = "Some notes",
     favorite=  true,
 }: Props): JSX.Element => {
-
+   const contactId = useParams<{ contactId: string }>().contactId;
   return (
     <div id="contact">
+      <h1>contactId = {contactId}</h1>
       <div>
         <img
           key={avatar}
           src={
             avatar ||
-            `https://robohash.org/${id}.png?size=200x200`
+            `https://robohash.org/${contactId}.png?size=200x200`
           }
         />
       </div>
