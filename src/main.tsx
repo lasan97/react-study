@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ErrorPage, Contact } from './routes/index.js';
+import { ErrorPage, Contact, Root } from './routes/index.js';
 import './index.css'
 import {
   createBrowserRouter,
@@ -10,16 +10,18 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-    errorElement: <ErrorPage/>
+    element: <Root/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />,
+      },
+    ],
   },
   {
     path: "test",
     element: <div>Hello Test world!</div>,
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Contact/>,
   },
 ]);
 
